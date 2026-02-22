@@ -3,10 +3,43 @@ import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 
 const skills = [
-    { category: 'Languages', items: ['Python', 'Java', 'TypeScript', 'JavaScript', 'HTML/CSS'] },
-    { category: 'Core CS', items: ['Data Structures', 'Algorithms', 'Mathematics', 'Object-Oriented Programming'] },
-    { category: 'AI & ML', items: ['Machine Learning', 'Deep Learning', 'Neural Networks', 'PyTorch/TensorFlow Basics'] },
-    { category: 'Tools & DevOps', items: ['Git', 'Linux', 'VS Code', 'Jupyter Notebooks'] }
+    {
+        category: 'Languages',
+        items: [
+            { name: 'Python', level: 95 },
+            { name: 'Java', level: 85 },
+            { name: 'TypeScript', level: 90 },
+            { name: 'JavaScript', level: 90 },
+            { name: 'HTML/CSS', level: 95 }
+        ]
+    },
+    {
+        category: 'Core CS',
+        items: [
+            { name: 'Data Structures', level: 90 },
+            { name: 'Algorithms', level: 85 },
+            { name: 'Mathematics', level: 80 },
+            { name: 'Object-Oriented Programming', level: 95 }
+        ]
+    },
+    {
+        category: 'AI & ML',
+        items: [
+            { name: 'Machine Learning', level: 85 },
+            { name: 'Deep Learning', level: 80 },
+            { name: 'Neural Networks', level: 85 },
+            { name: 'PyTorch/TensorFlow', level: 75 }
+        ]
+    },
+    {
+        category: 'Tools & DevOps',
+        items: [
+            { name: 'Git', level: 90 },
+            { name: 'Linux', level: 85 },
+            { name: 'VS Code', level: 95 },
+            { name: 'Jupyter', level: 90 }
+        ]
+    }
 ];
 
 export function Skills() {
@@ -40,22 +73,44 @@ export function Skills() {
                                     <h3 className="text-xl font-semibold text-white mb-6 border-b border-white/10 pb-4">
                                         {skillGroup.category}
                                     </h3>
-                                    <div className="flex flex-wrap gap-3">
+
+                                    <div className="space-y-5">
                                         {skillGroup.items.map((item, itemIdx) => (
-                                            <span
-                                                key={itemIdx}
-                                                className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-slate-300 text-sm hover:border-blue-500/50 hover:bg-blue-500/10 hover:text-white transition-all duration-300 cursor-default"
-                                            >
-                                                {item}
-                                            </span>
+                                            <div key={itemIdx} className="group">
+                                                <div className="flex justify-between text-sm mb-2">
+                                                    <span className="text-slate-300 font-medium group-hover:text-blue-400 transition-colors">
+                                                        {item.name}
+                                                    </span>
+                                                    <span className="text-slate-500 font-mono text-xs group-hover:text-purple-400 transition-colors">
+                                                        {item.level}%
+                                                    </span>
+                                                </div>
+                                                <div className="h-1.5 w-full bg-slate-950/50 rounded-full overflow-hidden relative border border-white/5">
+                                                    <motion.div
+                                                        initial={{ width: 0 }}
+                                                        whileInView={{ width: `${item.level}%` }}
+                                                        viewport={{ once: true }}
+                                                        transition={{ duration: 1.5, delay: 0.3 + (itemIdx * 0.1), ease: "easeOut" }}
+                                                        className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-600 to-purple-500 rounded-full overflow-hidden"
+                                                    >
+                                                        {/* Inner cyber pulse effect */}
+                                                        <motion.div
+                                                            animate={{ x: ["-100%", "200%"] }}
+                                                            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                                                            className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12"
+                                                        />
+                                                    </motion.div>
+                                                </div>
+                                            </div>
                                         ))}
                                     </div>
+
                                 </GlassCard>
                             </motion.div>
                         ))}
                     </div>
                 </motion.div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }

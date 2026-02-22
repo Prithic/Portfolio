@@ -20,10 +20,10 @@ export function GlitchText({ text, className = "", delay = 0, gradient = true }:
         const maxIterations = text.length;
 
         const interval = setInterval(() => {
-            setDisplayText(prev => {
+            setDisplayText(() => {
                 return text
                     .split('')
-                    .map((char, index) => {
+                    .map((_, index) => {
                         if (index < iterations) return text[index];
                         return CHARS[Math.floor(Math.random() * CHARS.length)];
                     })
