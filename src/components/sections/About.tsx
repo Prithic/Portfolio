@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { GlassCard } from '../ui/GlassCard';
+import { Terminal } from '../ui/Terminal';
 import { Target, Zap, Shield } from 'lucide-react';
 
 export function About() {
@@ -65,6 +66,17 @@ export function About() {
                             </div>
                         </GlassCard>
                     </div>
+
+                    {/* Interactive Terminal */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ delay: 0.4, type: "spring", stiffness: 100, damping: 20 }}
+                        className="mt-20 max-w-3xl mx-auto"
+                    >
+                        <Terminal className="h-[350px]" />
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
