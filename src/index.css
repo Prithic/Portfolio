@@ -10,6 +10,11 @@
     --foreground: 210 40% 98%;
   }
 
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden;
     background-color: #020617;

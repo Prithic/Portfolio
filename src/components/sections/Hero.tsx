@@ -92,7 +92,8 @@ export function Hero() {
                         transition={{ delay: 1.2, duration: 0.8 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12"
                     >
-                        <motion.button
+                        <motion.a
+                            href="#projects"
                             whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(59, 130, 246, 0.4)" }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -102,9 +103,12 @@ export function Hero() {
                                 View My Work <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </span>
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
-                        </motion.button>
+                        </motion.a>
 
-                        <motion.button
+                        <motion.a
+                            href="/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -112,7 +116,7 @@ export function Hero() {
                         >
                             Download Resume
                             <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
-                        </motion.button>
+                        </motion.a>
                     </motion.div>
                 </motion.div>
             </div>

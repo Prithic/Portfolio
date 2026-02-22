@@ -48,13 +48,13 @@ function App() {
       <footer className="border-t border-white/5 py-12 bg-slate-950 relative z-10">
         <div className="container mx-auto px-6 flex flex-col items-center justify-center gap-6 text-center">
           <div className="flex gap-6">
-            <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
+            <a href="https://github.com/Prithic" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
               <Github size={20} />
             </a>
-            <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
+            <a href="https://linkedin.com/in/prithic-p" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
               <Linkedin size={20} />
             </a>
-            <a href="#" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
+            <a href="mailto:hello@example.com" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
               <Mail size={20} />
             </a>
           </div>
