@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 import { Code2, Cpu } from 'lucide-react';
 
@@ -33,7 +34,7 @@ export function Experience() {
                 >
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                            Professional <span className="text-gradient">Experience</span>
+                            Professional <GlitchText text="Experience" />
                         </h2>
                         <p className="text-slate-400">Programs and communities where I actively contribute.</p>
                     </div>

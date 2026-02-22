@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 import { Terminal } from '../ui/Terminal';
 import { Target, Zap, Shield } from 'lucide-react';
@@ -33,7 +34,7 @@ export function About() {
                     className="max-w-4xl mx-auto"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">
-                        Driven by <span className="text-gradient">Purpose.</span>
+                        Driven by <GlitchText text="Purpose." />
                     </h2>
 
                     <div className="grid md:grid-cols-2 gap-12 items-center mb-16">

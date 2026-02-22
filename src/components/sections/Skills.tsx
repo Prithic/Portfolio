@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 
 const skills = [
@@ -20,7 +21,7 @@ export function Skills() {
                 >
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                            Technical <span className="text-gradient">Arsenal</span>
+                            Technical <GlitchText text="Arsenal" />
                         </h2>
                         <p className="text-slate-400">Core competencies and continuous focus areas.</p>
                     </div>

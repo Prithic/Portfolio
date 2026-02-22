@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 import { GraduationCap, BookOpen } from 'lucide-react';
 
@@ -30,7 +31,7 @@ export function Education() {
                     transition={{ duration: 0.6 }}
                 >
                     <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">
-                        Educational <span className="text-gradient">Journey</span>
+                        Educational <GlitchText text="Journey" />
                     </h2>
 
                     <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/10 before:to-transparent">

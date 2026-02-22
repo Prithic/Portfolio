@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -41,7 +42,7 @@ export function Projects() {
                 >
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                            Featured <span className="text-gradient">Projects</span>
+                            Featured <GlitchText text="Projects" />
                         </h2>
                         <p className="text-slate-400 max-w-2xl mx-auto">
                             A selection of recent work highlighting problem-solving, AI integration, and fluid frontend development.

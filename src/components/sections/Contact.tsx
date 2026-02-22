@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 import { Mail, MessageSquare, Send } from 'lucide-react';
 
@@ -14,7 +15,7 @@ export function Contact() {
                 >
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                            Let's <span className="text-gradient">Connect</span>
+                            Let's <GlitchText text="Connect" />
                         </h2>
                         <p className="text-slate-400 max-w-2xl mx-auto">
                             Whether you have an opportunity or just want to chat about AI/ML, I'm always open to connecting.
