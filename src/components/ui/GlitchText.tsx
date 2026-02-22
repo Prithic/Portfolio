@@ -61,7 +61,7 @@ export function GlitchText({ text, className = "", delay = 0, gradient = true }:
             initial={{ opacity: 0, y: 10 }}
             animate={controls}
             onHoverStart={handleHover}
-            className={\`inline-block font-mono cursor-default \${gradient ? 'text-gradient' : ''} \${className}\`}
+            className={`inline-block font-mono cursor-default ${gradient ? 'text-gradient' : ''} ${className}`}
         >
             {displayText || text.replace(/./g, '_')}
         </motion.span>
