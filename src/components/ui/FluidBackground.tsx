@@ -15,7 +15,7 @@ export function FluidBackground() {
     }, []);
 
     const particlesLoaded = async (container?: Container): Promise<void> => {
-        console.log("Particles loaded", container);
+        console.log("Stars loaded", container);
     };
 
     if (!init) {
@@ -25,7 +25,7 @@ export function FluidBackground() {
     return (
         <Particles
             id="tsparticles"
-            className="absolute inset-0 z-0 opacity-40 pointer-events-none mix-blend-screen"
+            className="absolute inset-0 z-0 opacity-80 pointer-events-none mix-blend-screen"
             particlesLoaded={particlesLoaded}
             options={{
                 background: {
@@ -34,59 +34,31 @@ export function FluidBackground() {
                     },
                 },
                 fpsLimit: 120,
-                interactivity: {
-                    events: {
-                        onClick: {
-                            enable: true,
-                            mode: "push",
-                        },
-                        onHover: {
-                            enable: true,
-                            mode: "grab",
-                        },
-                    },
-                    modes: {
-                        push: {
-                            quantity: 4,
-                        },
-                        grab: {
-                            distance: 140,
-                            links: {
-                                opacity: 0.5,
-                                color: "#3b82f6" // Tailwind blue-500
-                            }
-                        },
-                    },
-                },
                 particles: {
                     color: {
-                        value: ["#3b82f6", "#a855f7"], // Blue and Purple
+                        value: ["#ffffff", "#e0f2fe", "#bae6fd"], // Whites and very light blues
                     },
                     links: {
-                        color: "#ffffff",
-                        distance: 150,
-                        enable: true,
-                        opacity: 0.1,
-                        width: 1,
+                        enable: false, // Turn off fluid links
                     },
                     move: {
-                        direction: "none",
+                        direction: "none", // They move outward by default with outModes: "out"
                         enable: true,
                         outModes: {
-                            default: "bounce",
+                            default: "out", // Stars fly off the screen
                         },
                         random: true,
-                        speed: 1,
+                        speed: { min: 0.5, max: 3 }, // Varying speeds for depth
                         straight: false,
                     },
                     number: {
                         density: {
                             enable: true,
                         },
-                        value: 60,
+                        value: 150, // More stars
                     },
                     opacity: {
-                        value: 0.5,
+                        value: { min: 0.1, max: 1 },
                         animation: {
                             enable: true,
                             speed: 1,
@@ -97,7 +69,7 @@ export function FluidBackground() {
                         type: "circle",
                     },
                     size: {
-                        value: { min: 1, max: 3 },
+                        value: { min: 0.5, max: 2.5 }, // Varying sizes for depth
                         animation: {
                             enable: true,
                             speed: 2,
