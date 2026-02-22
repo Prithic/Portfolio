@@ -40,9 +40,12 @@ export function Terminal({ className }: { className?: string }) {
                         <div className="text-slate-300">
                             <p>Available commands:</p>
                             <ul className="list-disc list-inside ml-2 mt-1 space-y-1">
-                                <li><span className="text-blue-400">whoami</span> - Display identity information</li>
-                                <li><span className="text-blue-400">projects</span> - List priority target files</li>
-                                <li><span className="text-blue-400">skills</span> - Dump technical capabilities</li>
+                                <li><span className="text-blue-400">whoami</span> - Display core identity and ultimate driver</li>
+                                <li><span className="text-blue-400">skills</span> - Dump current physical/mental/technical mastery</li>
+                                <li><span className="text-blue-400">mindset</span> - View foundational operational philosophy</li>
+                                <li><span className="text-blue-400">future</span> - Display strategic timeline and goals</li>
+                                <li><span className="text-blue-400">hardware</span> - Reveal system specifications</li>
+                                <li><span className="text-blue-400">projects</span> - List priority impact targets</li>
                                 <li><span className="text-blue-400">contact</span> - Initiate secure connection</li>
                                 <li><span className="text-blue-400">clear</span> - Wipe terminal output</li>
                             </ul>
@@ -54,21 +57,42 @@ export function Terminal({ className }: { className?: string }) {
                 outputLog = {
                     id: (Date.now() + 1).toString(),
                     type: 'output',
-                    content: 'I am Prithic P, a BTech AI & ML student, dedicated to building high-impact technology and currently a Developer Program Member at NVIDIA and AMD.'
+                    content: 'Prithic. 18 years old. Tamil Nadu, India. First-generation graduate carrying the weight of family elevation. Driven by existential ambition to achieve peak human potential. I do not chase passion blindly; I chase maximum leverage.'
                 };
                 break;
-            case 'projects':
+            case 'mindset':
                 outputLog = {
                     id: (Date.now() + 1).toString(),
                     type: 'output',
-                    content: 'Accessing filesystem... \n- [CivicShield AI]: Predictive civic dashboard\n- [Proximity Data Viz]: Interactive radial charts\n- [Mediapipe Controller]: Hand gesture system'
+                    content: 'PROTOCOL: "Intentional, not loud."\nOBJECTIVES:\n- Protect and uplift family (Brother: Dilip).\n- Achieve highest ROI on time, effort, and suffering.\n- Rebuild from the root (Discipline > Motivation).'
+                };
+                break;
+            case 'future':
+                outputLog = {
+                    id: (Date.now() + 1).toString(),
+                    type: 'output',
+                    content: 'STRATEGIC TIMELINE:\n[Aug 2025]: TNEA Engineering Entry\n[2026]: JEE Preparation / Dual Track\n[Ongoing]: BS Data Science / MEXT Global Scholarship Profiling\n[Long-term]: Government stability mapping to world-class innovation (Musk, Stark level impact).'
                 };
                 break;
             case 'skills':
                 outputLog = {
                     id: (Date.now() + 1).toString(),
                     type: 'output',
-                    content: 'Initializing skill matrix...\n[Python, Java, TypeScript, AI/ML, PyTorch, React, Framer Motion]'
+                    content: 'STACKING LEVERAGE:\n=> Core: Python, Java, AI/ML, App Dev\n=> Body/Mind: Calisthenics, Mentalism, Posture Correction\n=> Output: Striving for peak intelligence, reflexes, and creativity.'
+                };
+                break;
+            case 'hardware':
+                outputLog = {
+                    id: (Date.now() + 1).toString(),
+                    type: 'output',
+                    content: 'LOCAL MACHINE SPECS:\n- Asus Vivobook 16X\n- CPU: Intel i7 12th Gen H-Series\n- RAM: 16GB\n- Storage: 512GB NVMe SSD\n- GPU: NVIDIA RTX 3050 (4GB GDDR6)\nSTATUS: No bottlenecks.'
+                };
+                break;
+            case 'projects':
+                outputLog = {
+                    id: (Date.now() + 1).toString(),
+                    type: 'output',
+                    content: 'ACTIVE IMPACT TARGETS:\n- [Mission 01]: River purification initiative, Tirupur.\n- [Mission 02]: India 2050 Vision alignment.\n- [Ongoing]: Hackathons, Buildathons, Global Olympiads.'
                 };
                 break;
             case 'contact':

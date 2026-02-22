@@ -8,18 +8,18 @@ export function About() {
     const principles = [
         {
             icon: <Target className="w-6 h-6 text-blue-400" />,
-            title: "Depth over Noise",
-            description: "Focusing on core principles and deep understanding rather than superficial trends."
+            title: "Maximum Leverage",
+            description: "I am not chasing passion blindly. I seek the highest ROI on my time, effort, and intelligence."
         },
         {
             icon: <Zap className="w-6 h-6 text-purple-400" />,
-            title: "Discipline over Motivation",
-            description: "Relying on consistent action and structured routine to drive long-term progress."
+            title: "Discipline > Motivation",
+            description: "Rebuilding from the root. Relying on strict routine and physical/mental transformation, not fleeting motivation."
         },
         {
             icon: <Shield className="w-6 h-6 text-blue-400" />,
-            title: "Compounding Growth",
-            description: "Valuing continuous learning and incremental improvements that yield massive results over time."
+            title: "Family Elevation",
+            description: "My success is not for personal glory. It is the survival and technological elevation of my bloodline."
         }
     ];
 
@@ -40,13 +40,13 @@ export function About() {
                     <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
                         <div className="space-y-6 text-slate-300 leading-relaxed text-lg">
                             <p>
-                                As a First-Generation College Student, I am driven by a deep sense of responsibility
-                                to uplift my family and contribute meaningfully to society. This shapes my discipline,
-                                long-term thinking, and commitment to consistent execution.
+                                I am the first graduate in my family. I carry a pressure most people my age don't understand,
+                                and I view my journey not as a quest for personal glory, but as a mission for my family's survival and elevation.
                             </p>
                             <p>
-                                My ultimate goal is to build a high-impact career in technology, achieve financial
-                                stability, and contribute to national-level initiatives through public service.
+                                A major driving force is guiding my younger brother, Dilip. I am actively working to shift his mindset
+                                towards exposure, comprehension, and global competition. I am intentional, not loud, and my ultimate vision
+                                is to reach a world-class level of impact—maximizing my leverage through technology.
                             </p>
                         </div>
 

@@ -56,7 +56,7 @@ export function Hero() {
                         transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 15 }}
                     >
                         <span className="inline-block py-1.5 px-4 rounded-full bg-white/5 border border-white/10 text-blue-300 text-sm font-medium tracking-wide mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                            NVIDIA & AMD Developer Program Member
+                            Pursuing Peak Human Potential
                         </span>
                     </motion.div>
 
@@ -82,8 +82,8 @@ export function Hero() {
                         transition={{ delay: 1, duration: 0.8 }}
                         className="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-light leading-relaxed"
                     >
-                        BTech AI & ML student dedicated to building high-impact technology.
-                        Focused on core CS fundamentals, deep learning, and consistent execution over shortcuts.
+                        18-year-old developer from Tamil Nadu. First-generation graduate carrying the weight of family elevation.
+                        Driven by an existential ambition to achieve maximum ROI on time, effort, and technology.
                     </motion.p>
 
                     <motion.div

@@ -5,17 +5,17 @@ import { GraduationCap, BookOpen } from 'lucide-react';
 
 const educations = [
     {
-        degree: "Bachelor of Technology - BTech",
-        field: "Artificial Intelligence & Machine Learning",
-        institution: "Sri Shakthi Institute of Engineering and Technology",
-        period: "2025 - 2029",
+        degree: "BTech Engineering (via TNEA) & Dual-Track",
+        field: "Strategic focus on AI / Computer Science",
+        institution: "Entering August 2025. Concurrently preparing for JEE 2026 with a drop-year mindset to maximize potential.",
+        period: "2025 - Present",
         icon: <GraduationCap className="w-6 h-6 text-blue-400" />
     },
     {
-        degree: "Higher Secondary Certificate",
-        field: "Computer Science and Mathematics",
-        institution: "Kongu Vellalar Matriculation Higher Secondary School",
-        period: "2012 - 2025",
+        degree: "BS in Data Science and Applications",
+        field: "Foundational mastery in analytics and development",
+        institution: "Parallel enrollment. Focus on real-world coding and internships.",
+        period: "Ongoing",
         icon: <BookOpen className="w-6 h-6 text-purple-400" />
     }
 ];

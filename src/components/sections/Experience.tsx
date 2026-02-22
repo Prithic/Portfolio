@@ -5,20 +5,28 @@ import { Code2, Cpu } from 'lucide-react';
 
 const experiences = [
     {
-        role: "Developer Program Member",
-        company: "NVIDIA",
-        period: "January 2026 - Present",
+        role: "Nation-Level Impact Initiatives",
+        company: "Vision 2050 & Community",
+        period: "Ongoing",
         icon: <Cpu className="w-8 h-8 text-green-500" />,
         color: "from-green-500/20 to-transparent",
-        description: "Engaging with cutting-edge AI technologies, participating in community discussions, and leveraging NVIDIA's deep learning resources to build intelligent applications."
+        description: "Actively participating in India 2050 vision discussions. Initiating real-world impact projects, starting with the purification of rivers in Tirupur."
+    },
+    {
+        role: "Strategic Global Profiling",
+        company: "MEXT & International Olympiads",
+        period: "Ongoing",
+        icon: <Code2 className="w-8 h-8 text-blue-500" />,
+        color: "from-blue-500/20 to-transparent",
+        description: "Executing a rigorous profile-building operation for fully-funded global migration routes (e.g., MEXT Japan), integrating hackathons, Olympiads, and high-ROI certifications."
     },
     {
         role: "Developer Program Member",
-        company: "AMD",
+        company: "NVIDIA & AMD",
         period: "January 2026 - Present",
         icon: <Code2 className="w-8 h-8 text-red-500" />,
         color: "from-red-500/20 to-transparent",
-        description: "Exploring high-performance computing, exploring Ryzen AI features, and optimizing machine learning models for hardware acceleration."
+        description: "Engaging with cutting-edge AI technologies, high-performance computing, and leveraging deep learning resources to build intelligent applications."
     }
 ];
 

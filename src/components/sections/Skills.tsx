@@ -4,40 +4,39 @@ import { GlassCard } from '../ui/GlassCard';
 
 const skills = [
     {
-        category: 'Languages',
+        category: 'Core Programming',
         items: [
             { name: 'Python', level: 95 },
             { name: 'Java', level: 85 },
-            { name: 'TypeScript', level: 90 },
-            { name: 'JavaScript', level: 90 },
-            { name: 'HTML/CSS', level: 95 }
+            { name: 'App Development', level: 75 },
+            { name: 'TypeScript / React', level: 80 }
         ]
     },
     {
-        category: 'Core CS',
-        items: [
-            { name: 'Data Structures', level: 90 },
-            { name: 'Algorithms', level: 85 },
-            { name: 'Mathematics', level: 80 },
-            { name: 'Object-Oriented Programming', level: 95 }
-        ]
-    },
-    {
-        category: 'AI & ML',
+        category: 'Emerging Tech & AI',
         items: [
             { name: 'Machine Learning', level: 85 },
-            { name: 'Deep Learning', level: 80 },
-            { name: 'Neural Networks', level: 85 },
-            { name: 'PyTorch/TensorFlow', level: 75 }
+            { name: 'Cybersecurity / Hacking', level: 75 },
+            { name: 'Space Science Concepts', level: 80 },
+            { name: 'Advanced Tech Integrations', level: 85 }
         ]
     },
     {
-        category: 'Tools & DevOps',
+        category: 'Physical Mastery',
         items: [
-            { name: 'Git', level: 90 },
-            { name: 'Linux', level: 85 },
-            { name: 'VS Code', level: 95 },
-            { name: 'Jupyter', level: 90 }
+            { name: 'Calisthenics (Strength)', level: 90 },
+            { name: 'Posture & Mechanics', level: 85 },
+            { name: 'Reflex Optimization', level: 80 },
+            { name: 'Peak Athletic Performance', level: 85 }
+        ]
+    },
+    {
+        category: 'Mental Architecture',
+        items: [
+            { name: 'Discipline & Consistency', level: 95 },
+            { name: 'Mentalism', level: 80 },
+            { name: 'High-Pressure Management', level: 90 },
+            { name: 'Strategic Profiling (ROI)', level: 95 }
         ]
     }
 ];
