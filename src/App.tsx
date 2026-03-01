@@ -7,7 +7,9 @@ import { Projects } from './components/sections/Projects';
 import { Contact } from './components/sections/Contact';
 import { CursorGlow } from './components/ui/CursorGlow';
 import { FluidBackground } from './components/ui/FluidBackground';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Mail } from 'lucide-react';
+import { SiLeetcode } from 'react-icons/si';
+import { FaLinkedin, FaXTwitter, FaInstagram } from 'react-icons/fa6';
 
 function App() {
   return (
@@ -51,10 +53,19 @@ function App() {
             <a href="https://github.com/Prithic" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
               <Github size={20} />
             </a>
-            <a href="https://linkedin.com/in/prithic-p" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
-              <Linkedin size={20} />
+            <a href="https://linkedin.com/in/prithic-p" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400" title="LinkedIn">
+              <FaLinkedin size={20} />
             </a>
-            <a href="mailto:hello@example.com" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400">
+            <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-white transition-all text-slate-400" title="X (Twitter)">
+              <FaXTwitter size={20} />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-pink-500 transition-all text-slate-400" title="Instagram">
+              <FaInstagram size={20} />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-yellow-500 transition-all text-slate-400" title="LeetCode">
+              <SiLeetcode size={20} />
+            </a>
+            <a href="mailto:hello@example.com" className="p-3 bg-white/5 rounded-full hover:bg-white/10 hover:text-blue-400 transition-all text-slate-400" title="Email">
               <Mail size={20} />
             </a>
           </div>

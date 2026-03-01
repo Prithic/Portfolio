@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { GlitchText } from '../ui/GlitchText';
 import { GlassCard } from '../ui/GlassCard';
 import { Mail, MessageSquare, Send } from 'lucide-react';
+import { SiLeetcode, SiHackerrank, SiCodechef } from 'react-icons/si';
+import { FaChess, FaLinkedin, FaXTwitter, FaInstagram, FaFacebook } from 'react-icons/fa6';
 
 export function Contact() {
     return (
@@ -55,6 +57,42 @@ export function Contact() {
                                         <span className="text-blue-500 mt-1">▹</span> Seeking internships / collaborations
                                     </li>
                                 </ul>
+                            </GlassCard>
+
+                            <GlassCard className="p-6">
+                                <h4 className="text-white font-bold text-lg mb-4">Coding Platforms</h4>
+                                <div className="flex flex-wrap gap-4">
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 hover:text-yellow-500 transition-colors text-slate-400" title="LeetCode">
+                                        <SiLeetcode size={22} />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 hover:text-green-500 transition-colors text-slate-400" title="HackerRank">
+                                        <SiHackerrank size={22} />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 hover:text-amber-600 transition-colors text-slate-400" title="CodeChef">
+                                        <SiCodechef size={22} />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 hover:text-green-600 transition-colors text-slate-400" title="Chess.com">
+                                        <FaChess size={22} />
+                                    </a>
+                                </div>
+                            </GlassCard>
+
+                            <GlassCard className="p-6">
+                                <h4 className="text-white font-bold text-lg mb-4">Socials</h4>
+                                <div className="flex flex-wrap gap-4">
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 hover:text-blue-500 transition-colors text-slate-400" title="LinkedIn">
+                                        <FaLinkedin size={22} />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 text-slate-400 hover:text-white transition-colors" title="X (Twitter)">
+                                        <FaXTwitter size={22} />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 hover:text-pink-500 transition-colors text-slate-400" title="Instagram">
+                                        <FaInstagram size={22} />
+                                    </a>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/5 rounded-xl hover:bg-white/10 hover:text-blue-600 transition-colors text-slate-400" title="Facebook">
+                                        <FaFacebook size={22} />
+                                    </a>
+                                </div>
                             </GlassCard>
                         </div>
 
