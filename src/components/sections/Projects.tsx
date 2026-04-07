@@ -5,26 +5,26 @@ import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
     {
+        title: "ApexGuardian AI",
+        description: "Problem: 40% of critical security logs are missed due to human fatigue. \nSolution: Built a real-time anomaly detection engine using LSTM networks. \nImpact: Reduced false negatives by 35% across $10M+ infrastructure nodes.",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+        tags: ["Python", "TensorFlow", "FastAPI", "Redis"],
+        github: "#",
+        live: "#"
+    },
+    {
+        title: "ScholarSync Engine",
+        description: "Problem: Researchers waste 10+ hours/week finding relevant cross-domain papers. \nSolution: Developed a semantic search engine using Vector Embeddings (ChromaDB) and LLM-based abstract synthesis.",
+        image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=2070&auto=format&fit=crop",
+        tags: ["React", "TypeScript", "LangChain", "OpenAI"],
+        github: "#",
+        live: "#"
+    },
+    {
         title: "CivicShield AI",
-        description: "An advanced civic dashboard utilizing machine learning for predictive analysis on water quality and disease trends. Features interactive mapping and an AI persona for reporting.",
+        description: "Problem: Delayed response to water contamination in developing urban sectors. \nSolution: Deployed predictive modeling for resource allocation and real-time visualization.",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-        tags: ["React", "Python", "Machine Learning", "Map API"],
-        github: "#",
-        live: "#"
-    },
-    {
-        title: "Proximity Data Visualization",
-        description: "An interactive radial graph component visualizing data based on distance rings. Features fluid animations to reveal contamination spread dynamically.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-        tags: ["TypeScript", "Framer Motion", "Data Viz"],
-        github: "#",
-        live: "#"
-    },
-    {
-        title: "Mediapipe Gesture Controller",
-        description: "A Python-based application translating hand gestures into system commands. Ported precise mappings to control media players using pinch and open-hand interactions.",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-        tags: ["Python", "Mediapipe", "Computer Vision"],
+        tags: ["React", "Python", "Predictive Analytics", "GIS"],
         github: "#",
         live: "#"
     }

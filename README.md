@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Prithic P | AI Systems Engineering Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, professional engineering tool designed to showcase AI systems architecture, distributed applications, and technical expertise. This portfolio rejects "vibe-coded" aesthetics in favor of a minimalist, industrial-grade developer platform experience.
 
-Currently, two official plugins are available:
+![Zero-Vibe Overview](https://i.ibb.co/vzZ3x7vM/zero-vibe-overview.png)
+*(Note: Replace with actual hosted screenshot when ready)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Aesthetic & Philosophy: "Zero-Vibe"
 
-## React Compiler
+The **Zero-Vibe** design system is built on the principle of technical clarity. Every UI element serves a functional purpose, mirroring the aesthetics of industry-standard platforms like Vercel, Linear, and Stripe.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Minimalist Palette**: Sophisticated Deep Slate and Black theme with high-contrast neutral borders.
+- **Precision Typography**: Standardized on **Inter** for UI clarity and **JetBrains Mono** for technical logs.
+- **Snappy Orchestration**: Instant UI state transitions powered by specialized Framer Motion logic.
+- **No Fluff**: Stripped of scanlines, neon glows, and cyberpunk tropes to focus on engineering content.
 
-## Expanding the ESLint configuration
+## 🚀 Key Modules
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### [1] **Overview View**
+A high-density strategic summary of core technical metrics, profile narrative, and real-time operational focus.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### [2] **Project Portfolio**
+Detailed engineering logs for distributed systems, RAG pipelines, and AI integrations. Each project is framed as a problem-solution-impact narrative.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### [3] **Technical Expertise**
+A categorized overview of full-stack AI capabilities, including Deep Learning, Backend Architecture, and Cloud Infrastructure.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### [4] **AI Command Console**
+A utilitarian, bash-inspired shell environment for command-line interaction and system-level information retrieval.
+
+### [5] **Operational Monitoring**
+Realistic activity logs simulating production and staging environments, providing a sense of "live" system maintenance.
+
+### [6] **Mission & Principles**
+A focus on long-term strategic objectives, technical principles, and global infrastructure goals.
+
+## 💻 Technical Stack
+
+- **Core**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion (Optimized)
+- **Icons**: Lucide React
+- **Deployment**: Firebase / Vercel
+
+## ⚡ Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone [repository-url]
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 🏗 Project Structure
+
+```text
+src/
+├── components/
+│   ├── dashboard/   # Modular view components (Overview, Projects, etc.)
+│   ├── layout/      # Core DashboardLayout and Sidebar
+│   └── ui/          # Low-level UI primitives
+├── App.tsx          # Main routing and state management
+└── index.css        # Global Zero-Vibe design tokens
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+**Protocol Status**: Fully Operational.
+**Target Aesthetic**: High-End Professional.

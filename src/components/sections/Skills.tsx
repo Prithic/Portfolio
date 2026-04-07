@@ -4,21 +4,21 @@ import { GlassCard } from '../ui/GlassCard';
 
 const skills = [
     {
-        category: 'Core Programming',
+        category: 'Intelligence & Systems',
         items: [
-            { name: 'Python', level: 95 },
-            { name: 'Java', level: 85 },
-            { name: 'App Development', level: 75 },
-            { name: 'TypeScript / React', level: 80 }
+            { name: 'Python / ML Ops', level: 95 },
+            { name: 'TensorFlow / PyTorch', level: 85 },
+            { name: 'FastAPI / Node.js', level: 90 },
+            { name: 'Scikit-Learn / Data Science', level: 85 }
         ]
     },
     {
-        category: 'Emerging Tech & AI',
+        category: 'Core Engineering',
         items: [
-            { name: 'Machine Learning', level: 85 },
-            { name: 'Cybersecurity / Hacking', level: 75 },
-            { name: 'Space Science Concepts', level: 80 },
-            { name: 'Advanced Tech Integrations', level: 85 }
+            { name: 'TypeScript / React', level: 90 },
+            { name: 'Java / Enterprise Patterns', level: 85 },
+            { name: 'C++ Systems Programming', level: 80 },
+            { name: 'SQL & Database Design', level: 85 }
         ]
     },
     {
@@ -34,9 +34,9 @@ const skills = [
         category: 'Mental Architecture',
         items: [
             { name: 'Discipline & Consistency', level: 95 },
-            { name: 'Mentalism', level: 80 },
+            { name: 'Strategic Profiling (ROI)', level: 95 },
             { name: 'High-Pressure Management', level: 90 },
-            { name: 'Strategic Profiling (ROI)', level: 95 }
+            { name: 'Systems Thinking', level: 90 }
         ]
     }
 ];

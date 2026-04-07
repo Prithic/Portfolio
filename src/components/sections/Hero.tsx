@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download } from 'lucide-react';
 
 export function Hero() {
-    const text = "Prithic P".split("");
+    const text = "Systems Architect".split("");
 
     const containerVars = {
         hidden: { opacity: 0 },
@@ -56,12 +56,12 @@ export function Hero() {
                         transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 15 }}
                     >
                         <span className="inline-block py-1.5 px-4 rounded-full bg-white/5 border border-white/10 text-blue-300 text-sm font-medium tracking-wide mb-6 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                            Pursuing Peak Human Potential
+                            Building for Maximum Leverage
                         </span>
                     </motion.div>
 
                     <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 perspective-1000">
-                        Hi, I'm <br className="hidden md:block" />
+                        AIML Engineer & <br className="hidden md:block" />
                         <motion.span
                             variants={containerVars}
                             initial="hidden"
@@ -82,8 +82,8 @@ export function Hero() {
                         transition={{ delay: 1, duration: 0.8 }}
                         className="max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-light leading-relaxed"
                     >
-                        18-year-old developer from Tamil Nadu. First-generation graduate carrying the weight of family elevation.
-                        Driven by an existential ambition to achieve maximum ROI on time, effort, and technology.
+                        Translating complex algorithms into real-world impact through intentional engineering.
+                        18-year-old developer from Tamil Nadu | Future Founder.
                     </motion.p>
 
                     <motion.div
