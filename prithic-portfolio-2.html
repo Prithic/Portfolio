@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chitti Speed Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+      --text-hero: clamp(3rem, 0.5rem + 7vw, 7rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.75rem; --radius-xl: 1rem; --radius-full: 9999px;
+      --font-display: 'Orbitron', 'Inter', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --color-bg: #f3f5f6;
+      --color-surface: #ffffff;
+      --color-surface-2: #f4f7f8;
+      --color-surface-offset: #e7edef;
+      --color-border: #ccd7dc;
+      --color-text: #101820;
+      --color-text-muted: #51616b;
+      --color-text-faint: #7b8d97;
+      --color-text-inverse: #edf7fb;
+      --color-primary: #0c9fb2;
+      --color-primary-hover: #0b8797;
+      --color-primary-highlight: #cdeef2;
+      --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.05);
+      --shadow-md: 0 10px 30px rgb(5 25 35 / 0.12);
+      --shadow-lg: 0 24px 64px rgb(5 25 35 / 0.18);
+    }
+    [data-theme="dark"] {
+      --color-bg: #071218;
+      --color-surface: #0d1c23;
+      --color-surface-2: #11262f;
+      --color-surface-offset: #16313c;
+      --color-border: #234550;
+      --color-text: #e7f7fb;
+      --color-text-muted: #9cb8c2;
+      --color-text-faint: #6a8a95;
+      --color-text-inverse: #071218;
+      --color-primary: #41e0f0;
+      --color-primary-hover: #88eff9;
+      --color-primary-highlight: rgba(65, 224, 240, 0.14);
+      --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.28);
+      --shadow-md: 0 12px 40px rgb(0 0 0 / 0.35);
+      --shadow-lg: 0 28px 80px rgb(0 0 0 / 0.45);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(65,224,240,0.08), transparent 26%),
+        radial-gradient(circle at 85% 15%, rgba(65,224,240,0.06), transparent 22%),
+        linear-gradient(180deg, #061018 0%, var(--color-bg) 30%, var(--color-bg) 100%);
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+    .skip-link {
+      position: absolute; left: var(--space-4); top: -40px; background: var(--color-primary); color: #001419;
+      padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); z-index: 1000;
+    }
+    .skip-link:focus { top: var(--space-4); }
+    .container { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--color-bg) 74%, transparent);
+      border-bottom: 1px solid rgba(156, 184, 194, 0.12);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+      padding: var(--space-4) 0;
+    }
+    .brand { display: flex; align-items: center; gap: var(--space-3); font-weight: 700; }
+    .brand svg { width: 42px; height: 42px; color: var(--color-primary); }
+    .brand span { font-family: var(--font-display); font-size: var(--text-sm); letter-spacing: 0.18em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+    .nav-links a { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .nav-links a:hover { color: var(--color-text); }
+    .theme-toggle {
+      width: 46px; height: 46px; display: inline-grid; place-items: center; border-radius: 50%;
+      border: 1px solid rgba(156, 184, 194, 0.16); background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    }
+    main { padding-bottom: var(--space-24); }
+    .hero {
+      min-height: 100vh; display: grid; align-items: center; padding: var(--space-16) 0 var(--space-12);
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full); border: 1px solid rgba(65,224,240,0.22); background: var(--color-primary-highlight);
+      color: var(--color-primary); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.18em;
+      margin-bottom: var(--space-6);
+    }
+    h1 {
+      font-family: var(--font-display); font-size: var(--text-hero); line-height: 0.95; letter-spacing: -0.04em;
+      text-transform: uppercase; max-width: 8ch;
+    }
+    .hero-sub {
+      margin-top: var(--space-6); color: var(--color-text-muted); max-width: 58ch;
+      font-size: clamp(1rem, 0.95rem + 0.5vw, 1.2rem);
+    }
+    .hero-cta { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-8); }
+    .btn {
+      min-height: 48px; padding: 0.9rem 1.3rem; border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: var(--space-2);
+      font-weight: 700; font-size: var(--text-sm);
+    }
+    .btn-primary { background: var(--color-primary); color: #031217; }
+    .btn-secondary { border: 1px solid rgba(156, 184, 194, 0.18); background: var(--color-surface); }
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(17,38,47,0.88), rgba(8,20,26,0.96)); border: 1px solid rgba(65,224,240,0.16);
+      border-radius: 28px; padding: var(--space-6); box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+    }
+    .hero-panel::before {
+      content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(65,224,240,0.12), transparent 40%, transparent 70%, rgba(65,224,240,0.08)); pointer-events: none;
+    }
+    .scanline { position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 4px); opacity: 0.08; pointer-events: none; }
+    .panel-top { display: flex; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6); color: var(--color-text-muted); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; }
+    .hud-face {
+      aspect-ratio: 1/1; border-radius: 24px; background:
+      radial-gradient(circle at center, rgba(65,224,240,0.18), transparent 55%),
+      linear-gradient(145deg, rgba(65,224,240,0.08), rgba(255,255,255,0.02));
+      border: 1px solid rgba(65,224,240,0.15); display: grid; place-items: center; position: relative; overflow: hidden;
+    }
+    .hud-face svg { width: min(280px, 72%); color: var(--color-primary); filter: drop-shadow(0 0 16px rgba(65,224,240,0.18)); }
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin-top: var(--space-5); }
+    .stat {
+      padding: var(--space-4); background: rgba(255,255,255,0.02); border: 1px solid rgba(65,224,240,0.1); border-radius: 18px;
+    }
+    .stat span { display: block; font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-faint); }
+    .stat strong { display: block; margin-top: var(--space-2); font-size: var(--text-xl); font-family: var(--font-display); color: var(--color-primary); }
+    section { padding: clamp(var(--space-10), 9vw, var(--space-20)) 0; }
+    .section-title { font-family: var(--font-display); font-size: var(--text-2xl); text-transform: uppercase; margin-bottom: var(--space-4); }
+    .section-copy { color: var(--color-text-muted); max-width: 60ch; margin-bottom: var(--space-8); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+    .card {
+      background: color-mix(in srgb, var(--color-surface) 92%, transparent); border: 1px solid rgba(156, 184, 194, 0.12);
+      border-radius: 22px; padding: var(--space-6); box-shadow: var(--shadow-sm);
+    }
+    .card small { display: inline-block; font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.16em; color: var(--color-primary); margin-bottom: var(--space-3); }
+    .card h3 { font-size: var(--text-lg); margin-bottom: var(--space-3); }
+    .card p { color: var(--color-text-muted); }
+    .timeline { display: grid; gap: var(--space-4); }
+    .timeline-item {
+      display: grid; grid-template-columns: 160px 1fr; gap: var(--space-4); align-items: start;
+      padding: var(--space-5); border-radius: 20px; background: var(--color-surface); border: 1px solid rgba(156, 184, 194, 0.12);
+    }
+    .timeline-item strong { font-family: var(--font-display); color: var(--color-primary); font-size: var(--text-sm); }
+    .project-wall {
+      display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--space-5);
+    }
+    .feature-project {
+      padding: var(--space-8); border-radius: 26px; background: linear-gradient(135deg, rgba(65,224,240,0.12), rgba(17,38,47,0.9));
+      border: 1px solid rgba(65,224,240,0.16); min-height: 100%;
+    }
+    .mini-projects { display: grid; gap: var(--space-5); }
+    .quote-box {
+      background: linear-gradient(180deg, rgba(65,224,240,0.08), rgba(255,255,255,0.02));
+      border-radius: 24px; border: 1px solid rgba(65,224,240,0.12); padding: var(--space-8);
+    }
+    blockquote { font-family: var(--font-display); font-size: var(--text-xl); line-height: 1.2; text-transform: uppercase; }
+    .quote-box p { margin-top: var(--space-4); color: var(--color-text-muted); }
+    footer {
+      padding: var(--space-10) 0 var(--space-16); color: var(--color-text-muted);
+    }
+    .footer-box {
+      display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap;
+      border-top: 1px solid rgba(156, 184, 194, 0.12); padding-top: var(--space-6);
+    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms ease, transform 700ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 960px) {
+      .hero-grid, .project-wall, .grid-3 { grid-template-columns: 1fr; }
+      h1 { max-width: 10ch; }
+    }
+    @media (max-width: 720px) {
+      .nav { align-items: flex-start; }
+      .nav-links { gap: var(--space-3); }
+      .timeline-item { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: var(--space-12); }
+    }
+  </style>
+</head>
+<body>
+  <a href="#content" class="skip-link">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+          <circle cx="32" cy="32" r="24" opacity="0.35"></circle>
+          <path d="M32 10v12M32 42v12M10 32h12M42 32h12"></path>
+          <path d="M20 20l24 24M44 20 20 44"></path>
+          <circle cx="32" cy="32" r="8"></circle>
+        </svg>
+        <span>System: You</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#identity">Identity</a>
+        <a href="#specs">Specs</a>
+        <a href="#projects">Projects</a>
+        <a href="#mission">Mission</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="reveal visible">
+          <div class="eyebrow">Portfolio Boot Sequence</div>
+          <h1>Speed: limitless. Memory: ambition.</h1>
+          <p class="hero-sub">
+            A cinematic personal portfolio inspired by the iconic robo-introduction style: bold specs, sharp identity, and a futuristic student profile. Built for an AI/ML engineer who loves electronics, technology, and next-generation ideas.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">View mission logs</a>
+            <a class="btn btn-secondary" href="#mission">Read the core directive</a>
+          </div>
+        </div>
+        <aside class="hero-panel reveal" aria-label="Profile system panel">
+          <div class="scanline"></div>
+          <div class="panel-top">
+            <span>Unit Profile</span>
+            <span>AI/ML Edition</span>
+          </div>
+          <div class="hud-face">
+            <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="4" aria-hidden="true">
+              <circle cx="120" cy="120" r="88" opacity="0.35"></circle>
+              <circle cx="120" cy="120" r="58" opacity="0.25"></circle>
+              <path d="M82 95c14-26 62-26 76 0"></path>
+              <circle cx="96" cy="114" r="8"></circle>
+              <circle cx="144" cy="114" r="8"></circle>
+              <path d="M94 150c16 12 36 12 52 0"></path>
+              <path d="M120 32v28M120 180v28M32 120h28M180 120h28"></path>
+            </svg>
+          </div>
+          <div class="stats">
+            <div class="stat"><span>Processor</span><strong>AI/ML Mind</strong></div>
+            <div class="stat"><span>Base</span><strong>Coimbatore</strong></div>
+            <div class="stat"><span>Power Core</span><strong>Electronics</strong></div>
+            <div class="stat"><span>Status</span><strong>Building</strong></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="identity">
+      <div class="container">
+        <h2 class="section-title reveal">Identity file</h2>
+        <p class="section-copy reveal">This section frames you like an advanced system rather than a plain resume: student, builder, tech explorer, and someone who gets excited by revolutions in AI, hardware, and intelligent products.</p>
+        <div class="grid-3">
+          <article class="card reveal">
+            <small>Name</small>
+            <h3>Your human version</h3>
+            <p>First-year B.Tech AI & ML student, learning fast, thinking big, and turning curiosity into real prototypes.</p>
+          </article>
+          <article class="card reveal">
+            <small>Origin</small>
+            <h3>Sri Shakthi Institute of Technology</h3>
+            <p>Academic base for machine learning, software fundamentals, experimentation, and project-driven growth.</p>
+          </article>
+          <article class="card reveal">
+            <small>Mindset</small>
+            <h3>Future-focused engineer</h3>
+            <p>Interested in electronics, latest tech, smart systems, and ideas that feel one step ahead of the present.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="specs">
+      <div class="container">
+        <h2 class="section-title reveal">System specs</h2>
+        <p class="section-copy reveal">Instead of boring skill bars, this area turns your strengths into machine-style readouts that feel dramatic and memorable.</p>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <strong>01 / Learning Engine</strong>
+            <div>
+              <h3>Artificial Intelligence & Machine Learning</h3>
+              <p>Core focus on intelligent systems, model thinking, experimentation, and the kind of technical curiosity that pushes beyond the classroom.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <strong>02 / Hardware Pulse</strong>
+            <div>
+              <h3>Electronics + Embedded Curiosity</h3>
+              <p>The portfolio concept can present you as someone who does not just code, but also loves the physical side of innovation.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <strong>03 / Build Mode</strong>
+            <div>
+              <h3>Projects, hackathons, and experimentation</h3>
+              <p>Perfect for showcasing mini builds, AI tools, smart devices, dashboards, and any crazy idea turned into a working demo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title reveal">Mission logs</h2>
+        <p class="section-copy reveal">Your portfolio works best when it shows one featured project and a few compact experiments, like a command center of things you have built or want to build next.</p>
+        <div class="project-wall">
+          <article class="feature-project reveal">
+            <small style="display:inline-block;color:var(--color-primary);text-transform:uppercase;letter-spacing:.16em;margin-bottom:var(--space-3);">Featured Build</small>
+            <h3 style="font-size:var(--text-xl);margin-bottom:var(--space-4);">Smart Health / AI Assistant / Robotics concept</h3>
+            <p style="max-width:58ch;color:var(--color-text-muted);margin-bottom:var(--space-6);">Use this area for your strongest idea: a healthcare AI, a wearable electronics prototype, a campus utility tool, or a futuristic assistant inspired by science fiction but grounded in real engineering.</p>
+            <div class="card" style="background:rgba(255,255,255,0.04);border-color:rgba(65,224,240,0.14);">
+              <h4 style="margin-bottom:var(--space-3);">Suggested format</h4>
+              <p>Problem → your solution → tech stack → result → what makes it different. This instantly makes the site feel serious and professional.</p>
+            </div>
+          </article>
+          <div class="mini-projects">
+            <article class="card reveal">
+              <small>Mini Log 01</small>
+              <h3>Electronics experiments</h3>
+              <p>Sensors, circuit ideas, automation concepts, and hardware-connected intelligence.</p>
+            </article>
+            <article class="card reveal">
+              <small>Mini Log 02</small>
+              <h3>Python / AI workflows</h3>
+              <p>Data analysis, ML practice, prototypes, small apps, and problem-solving code.</p>
+            </article>
+            <article class="card reveal">
+              <small>Mini Log 03</small>
+              <h3>Future concepts</h3>
+              <p>A section for wild ideas you want to build next, which fits your "crazy idea" personality perfectly.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission">
+      <div class="container">
+        <div class="quote-box reveal">
+          <blockquote>Not just a student profile. A next-gen system introduction.</blockquote>
+          <p>
+            The vibe is inspired by the famous Chitti-style self-introduction where the robot announces speed and memory, and that line is widely remembered as a dramatic robot identity moment in Enthiran quotations and references. This portfolio borrows that energy, but turns it into a modern personal brand instead of copying film dialogue directly.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-box">
+      <p>Designed as a futuristic portfolio concept for an AI/ML student builder.</p>
+      <p>Replace placeholders with your real name, links, projects, and contact details.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = 'dark';
+      const moon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      const sun = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+      toggle?.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        toggle.innerHTML = theme === 'dark' ? moon : sun;
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+  </script>
+</body>
+</html>

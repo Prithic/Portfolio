@@ -6,6 +6,10 @@ A high-performance, cinematic personal portfolio inspired by the robotic self-in
 
 The **Chitti Speed Portfolio** is designed as a "Boot Sequence" for a professional developer's identity. It frames a student profile as an advanced AI/ML system introduction, moving away from traditional static resumes towards a dynamic, HUD-style interface.
 
+### 📁 Available Units
+-   **[index.html](file:///index.html)**: Primary deployment-ready entry point.
+-   **[prithic-portfolio-2.html](file:///prithic-portfolio-2.html)**: Alternate configuration/file version.
+
 ### 🏗️ Technical Architecture
 
 This project is a masterclass in **Modern Vanilla Web Development**, prioritizing performance and maintainability without the overhead of heavy frameworks.
