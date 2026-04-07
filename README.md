@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# Chitti Speed Portfolio: Unit Profile v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, cinematic personal portfolio inspired by the robotic self-introduction style. This repository contains the `v2` development branch, optimized for speed and futuristic aesthetics.
 
-Currently, two official plugins are available:
+## 🤖 System Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The **Chitti Speed Portfolio** is designed as a "Boot Sequence" for a professional developer's identity. It frames a student profile as an advanced AI/ML system introduction, moving away from traditional static resumes towards a dynamic, HUD-style interface.
 
-## React Compiler
+### 🏗️ Technical Architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project is a masterclass in **Modern Vanilla Web Development**, prioritizing performance and maintainability without the overhead of heavy frameworks.
 
-## Expanding the ESLint configuration
+-   **Core**: Semantic HTML5 with ARIA accessibility standards.
+-   **Styling**: Pure CSS with:
+    -   **Fluid Typography**: Uses `clamp()` to scale text perfectly across all device sizes.
+    -   **Dynamic Theming**: Implements a `data-theme` system with `color-mix()` for harmonized color palettes.
+    -   **Layout**: A combination of CSS Grid (Level 2) and Flexbox for a robust 2D/1D layout control.
+-   **Interactivity**: Lightweight Vanilla JavaScript utilizing the **Intersection Observer API** for performant scroll-triggered animations.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📊 Analysis & Performance
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Minimalist Footprint
+By consolidating the portfolio into a single-file architecture (`index.html`), the project achieves:
+-   **Zero Build Overhead**: No `npm install`, no `vite build`, no dependencies.
+-   **Instant LCP**: The Largest Contentful Paint is optimized as all critical CSS and assets are loaded with the initial document.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 2. Design Philosophy
+The UI follows a **Glassmorphism/Cyberpunk Hybrid** aesthetic:
+-   **Typography**: `Orbitron` for headers (high-tech feel) and `Inter` for body (high readability).
+-   **Color Palette**: Primarily #071218 (Dark Surface) with #41e0f0 (Electric Cyan) highlights.
+-   **Micro-interactions**: Scanline overlays and radial gradients that react to the scroll position, giving the site a "living" HUD feel.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 3. Responsive Engineering
+The system uses a custom `container` class and CSS Grid to ensure that even complex layouts (like the 3-column Identity Grid) collapse gracefully for mobile units.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Deployment
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+To deploy this unit profile, simply serve the root directory.
+-   **Status**: Active
+-   **Branch**: `v2`
+-   **Memory**: Ambition
+-   **Speed**: Limitless
