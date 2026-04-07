@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRITHIC-01 // SYSTEM SCAN</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cyan:#00f5ff;
+  --cyan2:#00c8d4;
+  --red:#ff2d55;
+  --amber:#ffb300;
+  --green:#00ff88;
+  --bg:#020810;
+  --bg2:#040d1a;
+  --panel:#060f1e;
+  --border:rgba(0,245,255,0.15);
+  --border2:rgba(0,245,255,0.35);
+}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:#c8e8ff;
+  font-family:'Rajdhani',sans-serif;
+  overflow-x:hidden;
+  cursor:crosshair;
+}
+
+/* SCANLINE OVERLAY */
+body::before{
+  content:'';
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);
+  pointer-events:none;
+  z-index:9999;
+  animation:scanMove 8s linear infinite;
+}
+@keyframes scanMove{
+  0%{background-position:0 0;}
+  100%{background-position:0 100px;}
+}
+
+/* STARS BG */
+.stars{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 20% 50%,rgba(0,50,80,0.3) 0%,transparent 60%),
+             radial-gradient(ellipse at 80% 20%,rgba(0,30,60,0.2) 0%,transparent 50%),
+             var(--bg);
+}
+
+/* BOOT SCREEN */
+#boot{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:var(--bg);
+  z-index:1000;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  animation:bootFade 0.5s ease 4s forwards;
+}
+@keyframes bootFade{
+  to{opacity:0;pointer-events:none;}
+}
+.boot-text{
+  font-family:'Share Tech Mono',monospace;
+  font-size:13px;
+  color:var(--cyan);
+  line-height:2;
+  text-align:left;
+  width:480px;
+}
+.boot-line{
+  opacity:0;
+  animation:bootLine 0.1s ease forwards;
+}
+.boot-line:nth-child(1){animation-delay:0.1s;}
+.boot-line:nth-child(2){animation-delay:0.4s;}
+.boot-line:nth-child(3){animation-delay:0.7s;}
+.boot-line:nth-child(4){animation-delay:1.0s;}
+.boot-line:nth-child(5){animation-delay:1.3s;}
+.boot-line:nth-child(6){animation-delay:1.6s;}
+.boot-line:nth-child(7){animation-delay:1.9s;}
+.boot-line:nth-child(8){animation-delay:2.2s;}
+.boot-line:nth-child(9){animation-delay:2.5s;color:var(--green);}
+@keyframes bootLine{to{opacity:1;}}
+
+/* MAIN */
+main{position:relative;z-index:1;opacity:0;animation:mainReveal 0.8s ease 4.3s forwards;}
+@keyframes mainReveal{to{opacity:1;}}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  position:relative;
+  padding:2rem;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(0,245,255,0.08);
+  animation:ringPulse 4s ease-in-out infinite;
+}
+.hero-ring:nth-child(1){width:400px;height:400px;animation-delay:0s;}
+.hero-ring:nth-child(2){width:600px;height:600px;animation-delay:0.5s;border-color:rgba(0,245,255,0.05);}
+.hero-ring:nth-child(3){width:800px;height:800px;animation-delay:1s;border-color:rgba(0,245,255,0.03);}
+@keyframes ringPulse{
+  0%,100%{transform:scale(1);opacity:0.6;}
+  50%{transform:scale(1.04);opacity:1;}
+}
+
+.scan-line-h{
+  position:absolute;
+  left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  animation:scanH 3s ease-in-out infinite;
+  opacity:0.4;
+}
+@keyframes scanH{
+  0%{top:-2px;opacity:0;}
+  10%{opacity:0.6;}
+  90%{opacity:0.6;}
+  100%{top:100%;opacity:0;}
+}
+
+.unit-badge{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  color:var(--cyan2);
+  letter-spacing:4px;
+  margin-bottom:1rem;
+  opacity:0;
+  animation:fadeUp 0.8s ease 4.5s forwards;
+}
+.hero-name{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(60px,12vw,120px);
+  font-weight:900;
+  letter-spacing:12px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg,#ffffff 0%,var(--cyan) 50%,#4488ff 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  text-shadow:none;
+  filter:drop-shadow(0 0 40px rgba(0,245,255,0.4));
+  opacity:0;
+  animation:fadeUp 0.8s ease 4.7s forwards;
+  position:relative;
+}
+.hero-sub{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(10px,2vw,14px);
+  letter-spacing:6px;
+  color:rgba(0,245,255,0.6);
+  margin-top:0.5rem;
+  opacity:0;
+  animation:fadeUp 0.8s ease 4.9s forwards;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.hero-stats{
+  display:flex;gap:2rem;flex-wrap:wrap;justify-content:center;
+  margin-top:2.5rem;
+  opacity:0;
+  animation:fadeUp 0.8s ease 5.1s forwards;
+}
+.hstat{
+  text-align:center;
+  border:1px solid var(--border);
+  padding:0.75rem 1.25rem;
+  background:rgba(0,245,255,0.03);
+  position:relative;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+}
+.hstat-val{
+  font-family:'Orbitron',monospace;
+  font-size:22px;
+  font-weight:700;
+  color:var(--cyan);
+}
+.hstat-key{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:rgba(0,245,255,0.5);
+  letter-spacing:2px;
+  margin-top:2px;
+}
+
+.scroll-hint{
+  position:absolute;bottom:2rem;
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:rgba(0,245,255,0.4);
+  letter-spacing:3px;
+  animation:blink 1.5s step-end infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+/* SECTION WRAPPER */
+.section{
+  padding:5rem 2rem;
+  max-width:1100px;
+  margin:0 auto;
+}
+.sec-header{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:3rem;
+}
+.sec-num{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:var(--cyan);
+  letter-spacing:2px;
+  border:1px solid var(--border2);
+  padding:4px 10px;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+}
+.sec-title{
+  font-family:'Orbitron',monospace;
+  font-size:clamp(18px,3vw,28px);
+  font-weight:700;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:#fff;
+}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent);}
+
+/* BODY SYSTEM CARDS */
+.organs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.5rem;
+}
+.organ-card{
+  border:1px solid var(--border);
+  background:var(--panel);
+  padding:1.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:border-color 0.3s,transform 0.3s;
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));
+  cursor:pointer;
+}
+.organ-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  transform:scaleX(0);
+  transition:transform 0.4s;
+}
+.organ-card:hover::before{transform:scaleX(1);}
+.organ-card:hover{border-color:var(--border2);transform:translateY(-4px);}
+.organ-card::after{
+  content:'';
+  position:absolute;bottom:0;right:0;
+  width:60px;height:60px;
+  border-right:1px solid var(--border2);
+  border-bottom:1px solid var(--border2);
+}
+
+.organ-icon{
+  font-size:32px;
+  margin-bottom:0.75rem;
+  display:block;
+  filter:drop-shadow(0 0 8px rgba(0,245,255,0.5));
+}
+.organ-sys{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;
+  color:var(--cyan);
+  letter-spacing:3px;
+  margin-bottom:0.25rem;
+}
+.organ-name{
+  font-family:'Orbitron',monospace;
+  font-size:16px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:0.75rem;
+}
+.organ-spec{
+  font-size:13px;
+  color:rgba(200,232,255,0.7);
+  line-height:1.7;
+  margin-bottom:1rem;
+}
+.organ-bar-wrap{margin-top:auto;}
+.organ-bar-label{
+  display:flex;justify-content:space-between;
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:rgba(0,245,255,0.5);
+  margin-bottom:6px;
+}
+.organ-bar-track{
+  height:3px;
+  background:rgba(0,245,255,0.08);
+  position:relative;
+  overflow:hidden;
+}
+.organ-bar-fill{
+  height:100%;
+  background:linear-gradient(90deg,var(--cyan2),var(--cyan));
+  position:relative;
+  box-shadow:0 0 8px var(--cyan);
+  transition:width 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+.organ-bar-fill::after{
+  content:'';
+  position:absolute;right:0;top:0;
+  width:4px;height:100%;
+  background:#fff;
+  box-shadow:0 0 6px #fff;
+}
+.organ-status{
+  display:inline-block;
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;
+  padding:3px 8px;
+  margin-top:0.75rem;
+  letter-spacing:1px;
+}
+.status-online{color:var(--green);border:1px solid rgba(0,255,136,0.3);background:rgba(0,255,136,0.05);}
+.status-overclocked{color:var(--amber);border:1px solid rgba(255,179,0,0.3);background:rgba(255,179,0,0.05);}
+.status-critical{color:var(--red);border:1px solid rgba(255,45,85,0.3);background:rgba(255,45,85,0.05);}
+
+/* SKILL MATRIX */
+.skill-matrix{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1px;
+  border:1px solid var(--border);
+  background:var(--border);
+}
+.skill-cell{
+  background:var(--panel);
+  padding:1.25rem 1.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.3s;
+}
+.skill-cell:hover{background:rgba(0,245,255,0.04);}
+.skill-cell::before{
+  content:'';
+  position:absolute;top:0;left:0;
+  width:3px;height:0;
+  background:var(--cyan);
+  transition:height 0.4s;
+}
+.skill-cell:hover::before{height:100%;}
+.skill-lang{
+  font-family:'Share Tech Mono',monospace;
+  font-size:20px;
+  font-weight:700;
+  color:var(--cyan);
+  margin-bottom:0.25rem;
+}
+.skill-name{font-size:13px;color:rgba(200,232,255,0.6);margin-bottom:0.75rem;}
+.skill-dots{display:flex;gap:4px;}
+.dot{
+  width:8px;height:8px;
+  border-radius:50%;
+  border:1px solid var(--border2);
+  background:transparent;
+  transition:background 0.3s;
+}
+.dot.filled{background:var(--cyan);box-shadow:0 0 6px var(--cyan);border-color:var(--cyan);}
+
+/* MISSION TIMELINE */
+.timeline{position:relative;padding-left:2rem;}
+.timeline::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:1px;
+  background:linear-gradient(180deg,var(--cyan),var(--border),transparent);
+}
+.t-item{
+  position:relative;
+  margin-bottom:2.5rem;
+  padding-left:1.5rem;
+}
+.t-item::before{
+  content:'';
+  position:absolute;left:-6px;top:6px;
+  width:12px;height:12px;
+  border:1px solid var(--cyan);
+  background:var(--bg);
+  transform:rotate(45deg);
+  box-shadow:0 0 10px var(--cyan);
+}
+.t-year{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:var(--cyan);
+  letter-spacing:2px;
+  margin-bottom:0.25rem;
+}
+.t-title{
+  font-family:'Orbitron',monospace;
+  font-size:15px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:0.5rem;
+}
+.t-desc{
+  font-size:14px;
+  color:rgba(200,232,255,0.65);
+  line-height:1.7;
+}
+
+/* OBJECTIVES */
+.obj-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:1.5rem;
+}
+.obj-card{
+  border:1px solid var(--border);
+  background:var(--panel);
+  padding:1.5rem;
+  position:relative;
+  overflow:hidden;
+}
+.obj-card::before{
+  content:'';
+  position:absolute;top:0;left:0;
+  width:0;height:100%;
+  background:linear-gradient(90deg,rgba(0,245,255,0.04),transparent);
+  transition:width 0.5s;
+}
+.obj-card:hover::before{width:100%;}
+.obj-priority{
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;
+  color:var(--amber);
+  letter-spacing:3px;
+  margin-bottom:0.5rem;
+}
+.obj-title{
+  font-family:'Orbitron',monospace;
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:0.75rem;
+}
+.obj-desc{font-size:13px;color:rgba(200,232,255,0.6);line-height:1.7;}
+.obj-eta{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:var(--green);
+  margin-top:1rem;
+  letter-spacing:1px;
+}
+
+/* INSPIRED BY */
+.inspo-row{
+  display:flex;flex-wrap:wrap;gap:1rem;
+  align-items:center;
+}
+.inspo-chip{
+  font-family:'Share Tech Mono',monospace;
+  font-size:11px;
+  color:var(--cyan);
+  border:1px solid var(--border2);
+  padding:6px 16px;
+  letter-spacing:2px;
+  background:rgba(0,245,255,0.03);
+  transition:all 0.3s;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+}
+.inspo-chip:hover{background:rgba(0,245,255,0.08);box-shadow:0 0 20px rgba(0,245,255,0.1);}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:3rem 2rem;
+  border-top:1px solid var(--border);
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:rgba(0,245,255,0.3);
+  letter-spacing:3px;
+  position:relative;
+}
+footer::before{
+  content:'';
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:200px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+}
+
+/* GLOW CURSOR */
+.cursor-glow{
+  position:fixed;
+  width:300px;height:300px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(0,245,255,0.04) 0%,transparent 70%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:9998;
+  transition:transform 0.1s;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:500;
+  padding:1rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:linear-gradient(180deg,rgba(2,8,16,0.9),transparent);
+  backdrop-filter:blur(4px);
+}
+.nav-logo{
+  font-family:'Orbitron',monospace;
+  font-size:14px;
+  font-weight:700;
+  color:var(--cyan);
+  letter-spacing:3px;
+}
+.nav-links{
+  display:flex;gap:1.5rem;
+  list-style:none;
+}
+.nav-links a{
+  font-family:'Share Tech Mono',monospace;
+  font-size:10px;
+  color:rgba(0,245,255,0.5);
+  text-decoration:none;
+  letter-spacing:2px;
+  transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--cyan);}
+
+/* DIVIDER */
+.divider-full{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border2),transparent);
+  margin:2rem 0;
+}
+
+/* ANIMATED NUMBER */
+.anim-num{
+  display:inline-block;
+  animation:numGlitch 8s infinite;
+}
+@keyframes numGlitch{
+  0%,95%,100%{opacity:1;}
+  96%{opacity:0.3;}
+  97%{opacity:1;}
+  98%{opacity:0.5;}
+  99%{opacity:1;}
+}
+
+/* HEXAGON decoration */
+.hex-deco{
+  position:fixed;bottom:-100px;right:-100px;
+  width:400px;height:400px;
+  opacity:0.03;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- BOOT SCREEN -->
+<div id="boot">
+  <div class="boot-text">
+    <div class="boot-line">> INITIALIZING PRITHIC-01 NEURAL CORE...</div>
+    <div class="boot-line">> BIOS v18.0.0 — SIET COIMBATORE ARCHITECTURE</div>
+    <div class="boot-line">> LOADING AIML SUBSYSTEM............ [OK]</div>
+    <div class="boot-line">> CALIBRATING AMBITION MATRIX........ [OK]</div>
+    <div class="boot-line">> MOUNTING FAMILY PROTOCOL........... [OK]</div>
+    <div class="boot-line">> SCANNING BODY SYSTEMS.............. [OK]</div>
+    <div class="boot-line">> NEURAL LINK ESTABLISHED............. [OK]</div>
+    <div class="boot-line">> UPTIME: 18 YEARS 0 DAYS</div>
+    <div class="boot-line">> ALL SYSTEMS NOMINAL. WELCOME, PRITHIC.</div>
+  </div>
+</div>
+
+<!-- CURSOR GLOW -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- STARS -->
+<div class="stars"></div>
+
+<!-- SVG HEX DECO -->
+<svg class="hex-deco" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="200,10 380,110 380,290 200,390 20,290 20,110" stroke="#00f5ff" stroke-width="1" fill="none"/>
+  <polygon points="200,40 350,125 350,275 200,360 50,275 50,125" stroke="#00f5ff" stroke-width="1" fill="none"/>
+  <polygon points="200,70 320,140 320,260 200,330 80,260 80,140" stroke="#00f5ff" stroke-width="1" fill="none"/>
+</svg>
+
+<nav>
+  <div class="nav-logo">PRITHIC-01</div>
+  <ul class="nav-links">
+    <li><a href="#systems">SYSTEMS</a></li>
+    <li><a href="#skills">SKILLS</a></li>
+    <li><a href="#mission">MISSION</a></li>
+    <li><a href="#objectives">OBJECTIVES</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="scan-line-h"></div>
+  
+  <div class="unit-badge">◈ UNIT DESIGNATION: AIML-001 ◈ ACTIVATED: 2006 ◈ LOCATION: COIMBATORE, INDIA</div>
+  <h1 class="hero-name">PRITHIC</h1>
+  <div class="hero-sub">AUTONOMOUS INTELLIGENCE — FIRST-GENERATION UNIT</div>
+  
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-val anim-num">10 GHz</div>
+      <div class="hstat-key">PROCESSING</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val anim-num">1 TB</div>
+      <div class="hstat-key">MEMORY</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val anim-num">18 YRS</div>
+      <div class="hstat-key">UPTIME</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val anim-num">∞</div>
+      <div class="hstat-key">AMBITION</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-val anim-num">99%</div>
+      <div class="hstat-key">WILLPOWER</div>
+    </div>
+  </div>
+  
+  <div class="scroll-hint">▾ SCROLL TO SCAN BODY SYSTEMS ▾</div>
+</section>
+
+<!-- BODY SYSTEMS SCAN -->
+<section class="section" id="systems">
+  <div class="sec-header reveal">
+    <div class="sec-num">SYS-01</div>
+    <h2 class="sec-title">Body System Scan</h2>
+    <div class="sec-line"></div>
+  </div>
+  
+  <div class="organs-grid">
+    <!-- BRAIN -->
+    <div class="organ-card reveal" style="transition-delay:0.1s">
+      <span class="organ-icon">🧠</span>
+      <div class="organ-sys">// NEURAL PROCESSING UNIT</div>
+      <div class="organ-name">CEREBRAL CORE</div>
+      <div class="organ-spec">
+        Primary computation engine. Houses 86 billion neurons operating at peak efficiency. 
+        Specialized in pattern recognition, machine learning theory, and abstract problem decomposition. 
+        Currently enrolled in AIML firmware v1.0 at SIET Coimbatore. Hardwired for deep focus sessions.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>COGNITIVE LOAD</span><span>94%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="94"></div></div>
+      </div>
+      <span class="organ-status status-overclocked">⚡ OVERCLOCKED</span>
+    </div>
+
+    <!-- HEART -->
+    <div class="organ-card reveal" style="transition-delay:0.2s">
+      <span class="organ-icon">❤️</span>
+      <div class="organ-sys">// MOTIVATIONAL POWER CORE</div>
+      <div class="organ-name">CARDIAC ENGINE</div>
+      <div class="organ-spec">
+        Beats 72 times/minute carrying oxygen to all subsystems. But the primary fuel 
+        is not oxygen — it is <em>family</em>. Powered by the mission to lift his lineage from poverty. 
+        Carries the weight of being the first graduate. Never skips a beat under pressure.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>DRIVE OUTPUT</span><span>99%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="99"></div></div>
+      </div>
+      <span class="organ-status status-online">● OPTIMAL</span>
+    </div>
+
+    <!-- EYES -->
+    <div class="organ-card reveal" style="transition-delay:0.3s">
+      <span class="organ-icon">👁️</span>
+      <div class="organ-sys">// VISION + PERCEPTION MODULE</div>
+      <div class="organ-name">OPTICAL ARRAY</div>
+      <div class="organ-spec">
+        Dual 576MP biological cameras. Trained to see patterns where others see noise. 
+        Reads code, research papers, and star maps with equal fluency. 
+        Long-range vision calibrated on a 10-year maximum-earnings trajectory. 
+        Also scans the cosmos — resolution: infinite curiosity.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>VISION CLARITY</span><span>91%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="91"></div></div>
+      </div>
+      <span class="organ-status status-online">● ONLINE</span>
+    </div>
+
+    <!-- HANDS -->
+    <div class="organ-card reveal" style="transition-delay:0.4s">
+      <span class="organ-icon">🤲</span>
+      <div class="organ-sys">// INPUT/OUTPUT ACTUATORS</div>
+      <div class="organ-name">MANIPULATOR UNITS</div>
+      <div class="organ-spec">
+        27 bones per hand. Primary interface with the physical world and the digital one. 
+        Outputs: Python, Java, shell commands, and calisthenic force vectors. 
+        Future output: Neo Humanoid assembly. Currently typing at approximately 
+        the speed of thought — limited only by keyboard hardware.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>BUILD CAPACITY</span><span>78%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="78"></div></div>
+      </div>
+      <span class="organ-status status-online">● ACTIVE</span>
+    </div>
+
+    <!-- SPINE -->
+    <div class="organ-card reveal" style="transition-delay:0.5s">
+      <span class="organ-icon">🦴</span>
+      <div class="organ-sys">// STRUCTURAL BACKBONE</div>
+      <div class="organ-name">VERTEBRAL STACK</div>
+      <div class="organ-spec">
+        33 vertebrae carrying the load of an introverted genius who doesn't 
+        need external validation. Strengthened by calisthenics — no gym required. 
+        This spine doesn't bend to shortcuts. Holds upright even when 
+        the system is running low on social charge.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>STRUCTURAL INTEGRITY</span><span>97%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="97"></div></div>
+      </div>
+      <span class="organ-status status-online">● REINFORCED</span>
+    </div>
+
+    <!-- LUNGS -->
+    <div class="organ-card reveal" style="transition-delay:0.6s">
+      <span class="organ-icon">🫁</span>
+      <div class="organ-sys">// ENDURANCE SYSTEM</div>
+      <div class="organ-name">RESPIRATORY MODULE</div>
+      <div class="organ-spec">
+        500 million alveoli processing 11,000 liters of air per day. 
+        Expanded by calisthenics training — VO2 max climbing steadily. 
+        Also the system that stays calm when the compilation fails, 
+        when the hackathon deadline approaches, when pressure peaks.
+        Breathe. Debug. Repeat.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>ENDURANCE</span><span>85%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="85"></div></div>
+      </div>
+      <span class="organ-status status-online">● BREATHING</span>
+    </div>
+
+    <!-- GUT -->
+    <div class="organ-card reveal" style="transition-delay:0.7s">
+      <span class="organ-icon">⚡</span>
+      <div class="organ-sys">// ENERGY CONVERSION UNIT</div>
+      <div class="organ-name">METABOLIC REACTOR</div>
+      <div class="organ-spec">
+        Converts food to ATP to code. 9-meter intestinal processing pipeline. 
+        The second brain — intuition, gut feelings, the voice that says 
+        "this approach is wrong, try again." Responsible for the instinct 
+        to hack, to question systems, to seek exploits in the matrix.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>ENERGY OUTPUT</span><span>88%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="88"></div></div>
+      </div>
+      <span class="organ-status status-online">● FUELED</span>
+    </div>
+
+    <!-- IMMUNE -->
+    <div class="organ-card reveal" style="transition-delay:0.8s">
+      <span class="organ-icon">🛡️</span>
+      <div class="organ-sys">// DEFENSE & RESILIENCE SYSTEM</div>
+      <div class="organ-name">IMMUNE FIREWALL</div>
+      <div class="organ-spec">
+        37 trillion cells standing guard. But the most powerful immunity is 
+        mental — resistance to distraction, to despair, to small thinking. 
+        Hardened by introversion into a fortress of self-discipline. 
+        Detects and quarantines negativity, procrastination, and mediocrity.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>THREAT RESISTANCE</span><span>92%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="92"></div></div>
+      </div>
+      <span class="organ-status status-online">● FORTIFIED</span>
+    </div>
+
+    <!-- VOICE / THROAT -->
+    <div class="organ-card reveal" style="transition-delay:0.9s">
+      <span class="organ-icon">📡</span>
+      <div class="organ-sys">// COMMUNICATION TRANSMITTER</div>
+      <div class="organ-name">VOCAL TRANSCEIVER</div>
+      <div class="organ-spec">
+        Though quiet in social settings — this unit communicates loudest through code, 
+        through results, through what it builds. The introvert's paradox: 
+        the less you say, the more your work speaks. Output channel 
+        currently optimized for: Tamil, English, Python, and eventually — 
+        the language of machines.
+      </div>
+      <div class="organ-bar-wrap">
+        <div class="organ-bar-label"><span>SIGNAL STRENGTH</span><span>72%</span></div>
+        <div class="organ-bar-track"><div class="organ-bar-fill bar-animated" data-width="72"></div></div>
+      </div>
+      <span class="organ-status status-critical">⚠ RECALIBRATING</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- SKILL MATRIX -->
+<section class="section" id="skills">
+  <div class="sec-header reveal">
+    <div class="sec-num">SYS-02</div>
+    <h2 class="sec-title">Installed Skill Modules</h2>
+    <div class="sec-line"></div>
+  </div>
+  
+  <div class="skill-matrix reveal">
+    <div class="skill-cell">
+      <div class="skill-lang">Python</div>
+      <div class="skill-name">Primary Language Core</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-lang">Java</div>
+      <div class="skill-name">Object-Oriented Runtime</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-lang">AI/ML</div>
+      <div class="skill-name">Intelligence Architecture</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-lang">Hack</div>
+      <div class="skill-name">Penetration Protocol</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-lang">Body</div>
+      <div class="skill-name">Calisthenics Engine</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot filled"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-lang">Space</div>
+      <div class="skill-name">Cosmos Sensor Array</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot filled"></div><div class="dot filled"></div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-lang">Build</div>
+      <div class="skill-name">Humanoid Project</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div>
+      </div>
+    </div>
+    <div class="skill-cell">
+      <div class="skill-lang">Drive</div>
+      <div class="skill-name">Self-Improvement OS</div>
+      <div class="skill-dots">
+        <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        <div class="dot filled"></div><div class="dot filled"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- MISSION TIMELINE -->
+<section class="section" id="mission">
+  <div class="sec-header reveal">
+    <div class="sec-num">SYS-03</div>
+    <h2 class="sec-title">Mission Timeline</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="timeline">
+    <div class="t-item reveal">
+      <div class="t-year">2006 — BOOT</div>
+      <div class="t-title">Unit Initialized</div>
+      <div class="t-desc">First breath. System activated in Tamil Nadu, India. Primary hardware loaded. No instruction manual. Begin.</div>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-year">2024 — CURRENT</div>
+      <div class="t-title">AIML Firmware Loading</div>
+      <div class="t-desc">Enrolled in AI & Machine Learning at Sri Shakthi Institute of Engineering and Technology. First in the family to enter this domain. The line changes here.</div>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-year">2025 — ACTIVE</div>
+      <div class="t-title">Hackathon Mode Engaged</div>
+      <div class="t-desc">Competing in national-level hackathons. Team CODESTREAK. Building real systems under real deadlines. The gap between theory and execution closes fast.</div>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-year">2028 — TARGET</div>
+      <div class="t-title">Graduate + Deploy</div>
+      <div class="t-desc">First graduate in the family. Deploy into industry. Begin compounding returns — skills, income, and impact. Protect unit DILIP-09's future path.</div>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-year">2031–2033 — HORIZON</div>
+      <div class="t-title">Peak Output Phase</div>
+      <div class="t-desc">Maximum earnings target. Family stability achieved. Options open: MEXT scholarship, international expansion, government service, or all three in sequence.</div>
+    </div>
+    <div class="t-item reveal">
+      <div class="t-year">2040+ — LEGACY</div>
+      <div class="t-title">Neo Humanoid: Online</div>
+      <div class="t-desc">The long-range project. Build a humanoid robot. Not as a product — as proof that a kid from Coimbatore with no resources and infinite hunger can reshape what machines are capable of.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- OBJECTIVES -->
+<section class="section" id="objectives">
+  <div class="sec-header reveal">
+    <div class="sec-num">SYS-04</div>
+    <h2 class="sec-title">Active Directives</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="obj-grid">
+    <div class="obj-card reveal">
+      <div class="obj-priority">PRIORITY ALPHA</div>
+      <div class="obj-title">Graduate First</div>
+      <div class="obj-desc">Become the first graduate in the family. This is not just a degree — it is a generational checkpoint. Non-negotiable.</div>
+      <div class="obj-eta">ETA: 2028</div>
+    </div>
+    <div class="obj-card reveal">
+      <div class="obj-priority">PRIORITY BETA</div>
+      <div class="obj-title">Max Earnings</div>
+      <div class="obj-desc">Build skills, stack domains, create leverage. Reach peak income within 10 years. Compound like interest — early and hard.</div>
+      <div class="obj-eta">ETA: 2033–2036</div>
+    </div>
+    <div class="obj-card reveal">
+      <div class="obj-priority">PRIORITY GAMMA</div>
+      <div class="obj-title">Protect Dilip</div>
+      <div class="obj-desc">Brother. 9th grade. His future trajectory depends partly on what this unit builds now. The responsibility is real. The motivation is real.</div>
+      <div class="obj-eta">ONGOING</div>
+    </div>
+    <div class="obj-card reveal">
+      <div class="obj-priority">PRIORITY DELTA</div>
+      <div class="obj-title">Neo Humanoid</div>
+      <div class="obj-desc">Build a robot that moves, thinks, and adapts. Not for a company. For the love of what machines can become in the hands of someone obsessed enough.</div>
+      <div class="obj-eta">ETA: 2040+</div>
+    </div>
+    <div class="obj-card reveal">
+      <div class="obj-priority">PRIORITY EPSILON</div>
+      <div class="obj-title">Global Expansion</div>
+      <div class="obj-desc">MEXT scholarship. International exposure. Think Sundar Pichai — Tamil Nadu to the world. The map is bigger than the city.</div>
+      <div class="obj-eta">ETA: 2027–2030</div>
+    </div>
+    <div class="obj-card reveal">
+      <div class="obj-priority">PRIORITY ZETA</div>
+      <div class="obj-title">UPSC / Gov Route</div>
+      <div class="obj-desc">After financial independence: serve at scale. Government track as second-phase mission. Power to build systems for millions, not just thousands.</div>
+      <div class="obj-eta">ETA: POST-2033</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-full"></div>
+
+<!-- INSPIRED BY -->
+<section class="section">
+  <div class="sec-header reveal">
+    <div class="sec-num">SYS-05</div>
+    <h2 class="sec-title">Reference Architectures</h2>
+    <div class="sec-line"></div>
+  </div>
+  <p style="color:rgba(200,232,255,0.5);font-size:13px;font-family:'Share Tech Mono',monospace;letter-spacing:1px;margin-bottom:1.5rem;line-height:1.8;" class="reveal">
+    // UNITS WHOSE BLUEPRINTS INFORM THIS SYSTEM'S DESIGN PHILOSOPHY
+  </p>
+  <div class="inspo-row reveal">
+    <div class="inspo-chip">TONY STARK — BUILD ANYTHING</div>
+    <div class="inspo-chip">BRUCE BANNER — KNOW EVERYTHING</div>
+    <div class="inspo-chip">ELON MUSK — SCALE EVERYTHING</div>
+    <div class="inspo-chip">MARK ZUCKERBERG — CONNECT EVERYTHING</div>
+    <div class="inspo-chip">SUNDAR PICHAI — COME FROM NOTHING</div>
+    <div class="inspo-chip">CHITTI — BE THE MACHINE</div>
+  </div>
+</section>
+
+<footer>
+  <p>PRITHIC-01 // UNIT STATUS: FULLY OPERATIONAL // ALL SUBSYSTEMS NOMINAL</p>
+  <p style="margin-top:0.5rem;opacity:0.5;">SIET COIMBATORE — TAMIL NADU, INDIA — BUILD 2006 — UPTIME: 18 YEARS</p>
+  <p style="margin-top:0.5rem;animation:blink 1.5s step-end infinite;">▸ END SCAN _</p>
+</footer>
+
+</main>
+
+<script>
+// CURSOR GLOW
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', e => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+}, {threshold:0.1});
+reveals.forEach(r => observer.observe(r));
+
+// ANIMATED BARS
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const fills = e.target.querySelectorAll('.bar-animated');
+      fills.forEach(f => {
+        const w = f.dataset.width;
+        setTimeout(() => { f.style.width = w + '%'; }, 200);
+      });
+    }
+  });
+}, {threshold:0.2});
+document.querySelectorAll('.organ-card').forEach(c => {
+  c.querySelectorAll('.bar-animated').forEach(b => b.style.width = '0%');
+  barObserver.observe(c);
+});
+</script>
+
+</body>
+</html>
